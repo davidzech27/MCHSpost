@@ -1,10 +1,14 @@
-import { Head } from "next/document"
-import { SessionProvider } from "next-auth/react"
+import { QueryClient, QueryClientProvider } from "react-query"
 
-export default function App({ Component, pageProps }) {
-    return (
-        <SessionProvider session={pageProps.session}>
+
+const queryClient = new QueryClient()
+
+const App = ({ Component, pageProps }) => {
+	return (
+		<QueryClientProvider client={queryClient}>
             <Component {...pageProps} />
-        </SessionProvider>
-    )
+        </QueryClientProvider>	
+	)
 }
+
+export default App
