@@ -38,6 +38,14 @@ export default NextAuth({
             } catch (err) {
 				return "/signin"
 			}
-		}
+        },
+        async session({ session }) {
+            connectToDB()
+
+            const email = session.user.email.slice(0, -15)
+            const user = await User.findOne({ email: email })
+            const newSession = { ...user, expires: session.expires }
+            return newSession
+        }
 	}
 })
