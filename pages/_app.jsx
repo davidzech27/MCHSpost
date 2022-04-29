@@ -1,13 +1,15 @@
 import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
 
 
 const queryClient = new QueryClient()
 
 const App = ({ Component, pageProps }) => {
 	return (
-		<QueryClientProvider client={queryClient}>
+	    <QueryClientProvider client={queryClient}>
             <Component {...pageProps} />
-        </QueryClientProvider>	
+            <ReactQueryDevtools />
+        </QueryClientProvider>
 	)
 }
 
