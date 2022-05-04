@@ -13,7 +13,7 @@ const useStickyState = (key, defaultValue) => {
 
     useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(stickyState))
-    }, [stickyState])
+    }, [stickyState])//the second useeffect sets localstorage item to the defaultValue, and then sets it to the original localstorage value after the first useeffect's setState has occurred
 
     return [stickyState, setStickyState]
 }
