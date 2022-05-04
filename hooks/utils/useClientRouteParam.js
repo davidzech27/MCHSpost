@@ -3,13 +3,13 @@ import { useState, useEffect } from "react"
 
 const useClientRouteParam = () => {
     const router = useRouter()
-    const [pathParam, setPathParam] = useState(null)
+    const [routeParam, setRouteParam] = useState(null)
     useEffect(() => {
         const param = router.asPath.split("/").at(-1)
-        setPathParam(param)
-    })
+        setRouteParam(param)
+    }, [])
 
-    return pathParam
+    return routeParam
 }
 
 export default useClientRouteParam
