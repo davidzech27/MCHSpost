@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google"
 
 import User from "/models/User"
 import { connectToDB } from "/lib/db"
-import { getToken } from "next-auth/jwt"
 
 const authHandler = (req, res) => {
     return NextAuth(req, res, {
@@ -15,7 +14,6 @@ const authHandler = (req, res) => {
         ],
         callbacks: {
             async signin({ profile }) {
-                console.log(profile)
                 if (!profile.email.endsWith("@srcschools.org")) {
                     return "/signin" //"You must register with an @srcschools.org email address!"
                 }
@@ -39,7 +37,7 @@ const authHandler = (req, res) => {
                         return true //"Account created successfully!"
                     }
                 } catch (err) {
-                    return "/signin" //"An error has occurred!"
+                    return "/signin" //"A database error has occurred!"
                 }
             },
             jwt({ token }) {
