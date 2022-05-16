@@ -11,7 +11,7 @@ const friendsPostHandler = (req, res) => {
 
     const friendsPosts = await Post.find({ poster: { email: { $in: friendsEmails } } }).lean()
 
-    res.status(200).send(friendsPosts)
+    res.status(200).json(friendsPosts)
 }
 
 export default withDB(friendsPostHandler)

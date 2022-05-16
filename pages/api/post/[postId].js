@@ -8,7 +8,7 @@ const postHandler = (req, res) => {
     const post = await Post.findById(postId).lean()
 
     if (post.postSetting === "public") {
-        res.status(200).send(post)
+        res.status(200).json(post)
     } else {
         const { email } = await getToken({ req })
 
@@ -16,7 +16,7 @@ const postHandler = (req, res) => {
         const posterFriendsEmails = posterFriends.map((posterFriend) => posterFriend.email)
 
         if (posterFriendsEmails.includes(email)) {
-            res.status(200).send(post)
+            res.status(200).json(post)
         } else {
             res.status(403).send("Can't view private post. Not friends with user.")
         }
