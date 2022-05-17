@@ -21,7 +21,7 @@ const uploadHandler = (req, res) => {
         newPost = await Post.create(newPost)
         res.status(200).json(newPost)
     } else {
-        res.status(405).send(`HTTP method "${req.method}" not allowed for this request.`)
+        res.status(405).end()
     }
 }
 

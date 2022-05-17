@@ -13,6 +13,8 @@ const profileHandler = async (req, res) => {
         for (field of ["name", "photo", "bio"]) if (req.body[field]) newFields[field] = req.body[field]
         const newProfile = await User.findOneAndUpdate({ email }, newFields).lean()
         res.status(200).json(newProfile)
+    } else {
+        res.status(405).end()
     }
 }
     
