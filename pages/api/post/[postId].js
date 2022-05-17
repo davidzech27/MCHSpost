@@ -13,7 +13,7 @@ const postHandler = (req, res) => {
         } else {
             const { email } = await getToken({ req })
 
-            const posterFriends = await User.findOne({ email: post.poster.email }).select({ friends: 1  }).lean()
+            const { friends: posterFriends } = await User.findOne({ email: post.poster.email }).select({ friends: 1  }).lean()
             const posterFriendsEmails = posterFriends.map((posterFriend) => posterFriend.email)
 
             if (posterFriendsEmails.includes(email)) {
