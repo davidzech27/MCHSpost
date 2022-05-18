@@ -1,14 +1,13 @@
+@import url(https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap");
-
 @layer base {
     html,
     body {
-        @apply p-0 m-0 overscroll-none;
+        @apply p-0 m-0 overscroll-none overflow-y-scroll text-text font-sans font-normal;
     }
 
     a {
