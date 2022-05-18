@@ -18,11 +18,7 @@ module.exports = {
         fontFamily: {
             sans: ["News Cycle", "sans-serif"]
         },
-        extend: {
-            spacing: {
-                2.5: "0.625rem"
-            }
-        }
+        extend: {}
     },
     plugins: []
 }
