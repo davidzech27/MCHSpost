@@ -4,9 +4,13 @@ import { withDB } from "/lib/db"
 
 const profileHandler = async (req, res) => {
     const { email } = await getToken({ req })
-
-    const profile = await User.findOne({ email }).lean()
-    res.status(200).json(profile)
+    
+    if (email) {
+        const profile = await User.findOne({ email }).lean()
+        res.status(200).json(profile)
+    } else {
+        res.status(401).end()
+    }
 }
     
 export default withDB(profileHandler)
