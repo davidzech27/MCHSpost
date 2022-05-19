@@ -5,7 +5,7 @@ const LinkCard = ({ children, className, href }) => {
     return (
         <Link href={href} passHref>
             <div>
-                <Card className={className}>
+                <Card className={`cursor-pointer transition duration-100 ${className}`}>
                     {children}
                 </Card>
             </div>
