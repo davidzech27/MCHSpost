@@ -13,7 +13,7 @@ const authHandler = (req, res) => {
             })
         ],
         callbacks: {
-            async signin({ profile }) {
+            async signIn({ profile }) {
                 if (!profile.email.endsWith("@srcschools.org")) {
                     return "/signin" //"You must register with an @srcschools.org email address!"
                 }
