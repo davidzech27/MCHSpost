@@ -8,8 +8,8 @@ const updateProfileHandler = (req, res) => {
     const newFields = {}
     for (field of ["name", "photo", "bio"]) if (req.body[field]) newFields[field] = req.body[field]
 
-    const newProfile = await User.findOneAndUpdate({ email }, newFields).lean()
-    res.status(200).json(newProfile)
+    const updatedProfile = await User.findOneAndUpdate({ email }, newFields).lean()
+    res.status(200).json(updatedProfile)
 }
 
 export default withDB(updateProfileHandler)
