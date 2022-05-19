@@ -2,12 +2,12 @@ import Card from "/components/Card"
 import Column from "/components/column"
 import Button from "/components/Button"
 import LinkButton from "/components/LinkButton"
-import AboutPageButton from "/components/AboutPageButton"
+import AboutPageLink from "/components/AboutPageLink"
 
 const NavBar = ({ authenticatedState }) => {
     return (
         <Column>
-            <AboutPageButton />
+            <AboutPageLink />
             <Card className="bg-surface1">
                 <Column>
                     <LinkButton href="/home" className="hover:bg-hover">Home</LinkButton>
