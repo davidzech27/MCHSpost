@@ -9,7 +9,7 @@ const profileHandler = async (req, res) => {
         const profile = await User.findOne({ email }).lean()
         res.status(200).json(profile)
     } else {
-        res.status(401).end()
+        res.status(200).json({})
     }
 }
     
