@@ -7,7 +7,7 @@
 @layer base {
     html,
     body {
-        @apply p-0 m-0 overscroll-none overflow-y-scroll text-text font-sans font-normal;
+        @apply p-0 m-0 overscroll-none text-text font-sans font-normal;
     }
 
     a {
