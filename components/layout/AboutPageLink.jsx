@@ -1,4 +1,4 @@
-import LinkCard from "/components/util/LinkCard"
+import LinkCard from "/components/wrapper/LinkCard"
 
 const AboutPageLink = () => {
     return (

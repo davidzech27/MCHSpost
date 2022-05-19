@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Button from "/components/util/Button"
+import Button from "/components/input/Button"
 
 const LinkButton = ({ children, className, href }) => {
     return (

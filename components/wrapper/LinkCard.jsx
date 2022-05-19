@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Card from "/components/util/Card"
+import Card from "/components/wrapper/Card"
 
 const LinkCard = ({ children, className, href }) => {
     return (
