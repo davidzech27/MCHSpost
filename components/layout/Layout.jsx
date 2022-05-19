@@ -1,7 +1,7 @@
-import useProfile from "/hooks/profile/useProfile"
+import useProfile from "/hooks/api/useProfile"
 
-import NavBar from "/components/NavBar"
-import ExploreBar from "/components/ExploreBar"
+import NavBar from "/components/layout/NavBar"
+import ExploreBar from "/components/layout/ExploreBar"
 
 const Layout = ({ children }) => {
     const { profile, unauthenticated } = useProfile()

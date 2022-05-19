@@ -2,7 +2,7 @@ import Card from "/components/Card"
 import Column from "/components/column"
 import Button from "/components/Button"
 import LinkButton from "/components/LinkButton"
-import AboutPageLink from "/components/AboutPageLink"
+import AboutPageLink from "/components/layout/AboutPageLink"
 
 const NavBar = ({ authenticatedState }) => {
     return (

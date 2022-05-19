@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import api from "/lib/api"
 
-import Layout from "/components/Layout"
+import Layout from "/components/layout/Layout"
 
 import "/styles/globals.css"
 
