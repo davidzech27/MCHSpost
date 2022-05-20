@@ -9,10 +9,14 @@ const LoadingScreen = () => {
 	}, [])
 
 	return (
-		<>
-			<div>MCHSpost</div>
-		</>
+		<div class="h-screen pt-72 text-center
+                    bg-gradient-to-r from-green to-yellow
+                    text-9xl text-text font-black">
+            <span class="animate-pulse">MCHSpost</span>
+        </div>
 	)
 }
+
+LoadingScreen.noLayout = true
 
 export default LoadingScreen
