@@ -5,14 +5,14 @@ const PostSchema = new mongoose.Schema({
         type: String,
         default: "..."
     },
-    poster: {//determined by server based on who sent post request
+    postedBy: {//determined by server based on who sent post request
         email: String,
         name: String,
         photo: String
     },
     comments: [{//not set at document creation
         text: String,
-        commenter: {
+        commentedBy: {
             email: String,
             name: String,
             photo: String
