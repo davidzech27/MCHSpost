@@ -33,7 +33,9 @@ const App = ({ Component, pageProps }) => {
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
-                <Toaster />
+                <Toaster toastOptions={{
+                    className: "bg-background text-text"
+                }} />
                 <ReactQueryDevtools />
             </QueryClientProvider>
 	    )
@@ -41,7 +43,9 @@ const App = ({ Component, pageProps }) => {
         return (
             <QueryClientProvider client={queryClient}>
                 <Component {...pageProps} />
-                <Toaster />
+                <Toaster toastOptions={{
+                    className: "bg-background text-text"
+                }} />
                 <ReactQueryDevtools />
             </QueryClientProvider>
         )
