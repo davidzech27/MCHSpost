@@ -1,18 +1,26 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import { useQueryClient } from "react-query"
 
 const LoadingScreen = () => {
 	const router = useRouter()
+    const queryClient = useQueryClient()
 
 	useEffect(() => {
-		router.push("/home")
+        const prefetchQueries = async () => {
+            await queryClient.prefetchQuery("/profile")
+            console.log(queryClient.getQueryData("/profile"))
+		    router.push("/home")
+        }
+
+        prefetchQueries()
 	}, [])
 
 	return (
-		<div class="h-screen pt-72 text-center
+		<div className="h-screen pt-72 text-center
                     bg-gradient-to-r from-green to-yellow
                     text-9xl text-text font-black">
-            <span class="animate-pulse">MCHSpost</span>
+            <span className="animate-pulse">MCHSpost</span>
         </div>
 	)
 }
