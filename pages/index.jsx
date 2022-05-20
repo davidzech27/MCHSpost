@@ -9,7 +9,6 @@ const LoadingScreen = () => {
 	useEffect(() => {
         const prefetchQueries = async () => {
             await queryClient.prefetchQuery("/profile")
-            console.log(queryClient.getQueryData("/profile"))
 		    router.push("/home")
         }
 
