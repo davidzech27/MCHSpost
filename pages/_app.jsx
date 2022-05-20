@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
+import toast, { Toaster } from "react-hot-toast"
 import api from "/lib/api"
 
 import Layout from "/components/layout/Layout"
@@ -13,13 +14,13 @@ const queryClient = new QueryClient({
                 return (await api.get(queryKey[0])).data
             },
             onError: (err) => {
-                console.log(err)
+                toast(err.response)
             },
             retry: false
         },
         mutations: {
             onError: (err) => {
-                console.log(err.response)
+                toast(err.response)
             }
         }
     }
@@ -32,6 +33,7 @@ const App = ({ Component, pageProps }) => {
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
+                <Toaster />
                 <ReactQueryDevtools />
             </QueryClientProvider>
 	    )
@@ -39,6 +41,7 @@ const App = ({ Component, pageProps }) => {
         return (
             <QueryClientProvider client={queryClient}>
                 <Component {...pageProps} />
+                <Toaster />
                 <ReactQueryDevtools />
             </QueryClientProvider>
         )
