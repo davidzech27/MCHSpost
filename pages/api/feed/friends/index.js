@@ -3,7 +3,7 @@ import User from "/models/User"
 import { getToken } from "next-auth/jwt"
 import { withDB } from "/lib/db"
 
-const friendsPostHandler = (req, res) => {
+const friendsPostHandler = async (req, res) => {
     const { email } = await getToken({ req })
 
     const friends = await User.find({ email }).select({ friends: 1 }).lean()

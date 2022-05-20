@@ -3,7 +3,7 @@ import User from "/models/User"
 import { getToken } from "next-auth/jwt"
 import withDB from "/lib/db"
 
-const postHandler = (req, res) => {
+const postHandler = async (req, res) => {
     const { postId } = req.query
     const post = await Post.findById(postId).lean()
 

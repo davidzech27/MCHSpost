@@ -2,7 +2,7 @@ import User from "/models/User"
 import { getToken } from "next-auth/jwt"
 import { withDB } from "/lib/db"
 
-const updateProfileHandler = (req, res) => {
+const updateProfileHandler = async (req, res) => {
     if (req.method === "POST") {
         const { email } = await getToken({ req })
 
