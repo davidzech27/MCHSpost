@@ -27,29 +27,22 @@ const queryClient = new QueryClient({
 })
 
 const App = ({ Component, pageProps }) => {
-    if (!Component.noLayout) {
-        return (
-            <QueryClientProvider client={queryClient}>
-                <Layout>
+    const content = !Component.noLayout ?
+                    <Layout><Component {...pageProps} /></Layout> :
                     <Component {...pageProps} />
-                </Layout>
-                <Toaster toastOptions={{
-                    className: "bg-background text-text"
-                }} />
-                <ReactQueryDevtools />
-            </QueryClientProvider>
-	    )
-    } else {
-        return (
+
+    return (
+        <>
+            <Toaster toastOptions={{
+                className: "bg-background text-text"
+            }} />
+
             <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
-                <Toaster toastOptions={{
-                    className: "bg-background text-text"
-                }} />
+                {content}
                 <ReactQueryDevtools />
             </QueryClientProvider>
-        )
-    }
+        </>
+    )
 }
 
 export default App
