@@ -1,10 +1,16 @@
-
+import Column from "/components/wrapper/Column"
+import Card from "/components/wrapper/Card"
 
 const ExploreBar = () => {
     return (
-        <>
-            <p>ExploreBar</p>
-        </>
+        <Column>
+            <Card className="h-64 bg-surface1">
+
+            </Card>
+            <Card className="h-96 bg-surface1">
+                
+            </Card>
+        </Column>
     )
 }
  
