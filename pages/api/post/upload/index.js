@@ -1,13 +1,13 @@
 import Post from "/models/Post"
 import User from "/models/User"
 import { getToken } from "next-auth/jwt"
-import withDB from "/lib/db"
+import { withDB } from "/lib/db"
 
 const uploadHandler = async (req, res) => {
     if (req.method === "POST") {
         const { email } = await getToken({ req })
         const user = await User.findOne({ email }).select({ name: 1, photo: 1 }).lean()
-
+        console.log({ email })
         let newPost = {
             text: req.body.text,
             poster: {

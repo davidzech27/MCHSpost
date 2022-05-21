@@ -1,7 +1,7 @@
 import Post from "/models/Post"
 import User from "/models/User"
 import { getToken } from "next-auth/jwt"
-import withDB from "/lib/db"
+import { withDB } from "/lib/db"
 
 const postHandler = async (req, res) => {
     const { postId } = req.query
