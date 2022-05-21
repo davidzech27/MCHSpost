@@ -21,6 +21,9 @@ module.exports = {
         extend: {
             spacing: {
                 13: "52px"
+            },
+            opacity: {
+                85: 0.85
             }
         }
     },
