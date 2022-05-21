@@ -1,6 +1,6 @@
-const Column = ({ children, className }) => {
+const Column = ({ children, className = "" }) => {
     return (
-        <div className={`flex flex-col content-start gap-2.5 ${className ?? ""}`}>
+        <div className={`flex flex-col content-start gap-2.5 ${className}`}>
             {children}
         </div>
     )
