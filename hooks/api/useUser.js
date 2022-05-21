@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
 
 const usePost = (email) => {
-    const { data: user, isFetched: userLoaded } = useQuery(`/user/${email}`)
+    const { data: user, isFetched: userLoaded } = useQuery(`/user/${email ?? "all"}`)
     
     return [user, userLoaded]
 }
