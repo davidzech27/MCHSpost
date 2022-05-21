@@ -7,10 +7,10 @@ const uploadHandler = async (req, res) => {
     if (req.method === "POST") {
         const { email } = await getToken({ req })
         const user = await User.findOne({ email }).select({ name: 1, photo: 1 }).lean()
-        console.log({ email })
+
         let newPost = {
             text: req.body.text,
-            poster: {
+            postedBy: {
                 email,
                 name: user.name,
                 photo: user.photo
