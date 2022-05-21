@@ -27,10 +27,6 @@ const queryClient = new QueryClient({
 })
 
 const App = ({ Component, pageProps }) => {
-    const content = !Component.noLayout ?
-                    <Layout><Component {...pageProps} /></Layout> :
-                    <Component {...pageProps} />
-
     return (
         <>
             <Toaster toastOptions={{
@@ -38,7 +34,9 @@ const App = ({ Component, pageProps }) => {
             }} />
 
             <QueryClientProvider client={queryClient}>
-                {content}
+                {!Component.noLayout ?
+                <Layout><Component {...pageProps} /></Layout> :
+                <Component {...pageProps} />}
                 <ReactQueryDevtools />
             </QueryClientProvider>
         </>
