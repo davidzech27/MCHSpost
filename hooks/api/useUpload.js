@@ -8,7 +8,9 @@ const useUpload = () => {
         return (await api.post("/post/upload", newPost)).data
     }, {
         onSuccess: (newPost) => {
-            queryClient.setQueryData("/feed/public", (publicFeed) => [newPost, ...publicFeed])
+            if (newPost.postSetting === "public") {
+                queryClient.setQueryData("/feed/public", (publicFeed) => [newPost, ...publicFeed])
+            }
         }
     })
 
