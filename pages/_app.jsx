@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import toast, { Toaster } from "react-hot-toast"
 import api from "/lib/api"
+import { ModalContext } from "/lib/context.js"
 
 import Layout from "/components/layout/Layout"
 
@@ -16,7 +18,8 @@ const queryClient = new QueryClient({
             onError: (err) => {
                 toast(err.response)
             },
-            retry: false
+            retry: false,
+            refetchOnWindowFocus: false
         },
         mutations: {
             onError: (err) => {
@@ -27,6 +30,8 @@ const queryClient = new QueryClient({
 })
 
 const App = ({ Component, pageProps }) => {
+    const [modal, setModal] = useState(null)
+
     return (
         <>
             <Toaster toastOptions={{
@@ -34,9 +39,14 @@ const App = ({ Component, pageProps }) => {
             }} />
 
             <QueryClientProvider client={queryClient}>
-                {!Component.noLayout ?
-                <Layout><Component {...pageProps} /></Layout> :
-                <Component {...pageProps} />}
+                <ModalContext.Provider value={{ setModal }}>
+                    {modal}
+
+                    {!Component.noLayout ?
+                    <Layout><Component {...pageProps} /></Layout> :
+                    <Component {...pageProps} />}
+                </ModalContext.Provider>
+
                 <ReactQueryDevtools />
             </QueryClientProvider>
         </>
