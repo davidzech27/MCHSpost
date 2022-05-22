@@ -3,7 +3,7 @@ import useProfile from "/hooks/api/useProfile"
 import NavBar from "/components/layout/NavBar"
 import ExploreBar from "/components/layout/ExploreBar"
 
-const Layout = ({ children }) => {
+const Layout = ({ Component }) => {
     const { profile, unauthenticated } = useProfile()
 
     return (
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
                 <NavBar authenticatedState={!unauthenticated} />
             </div>
             <div className="min-h-screen basis-1/2 py-8">
-                {children}
+                <Component profile={profile} authenticatedState={!unauthenticated} />
             </div>
             <div className="h-screen basis-1/4 sticky top-0 p-8">
                 <ExploreBar />

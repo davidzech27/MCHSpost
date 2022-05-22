@@ -29,7 +29,7 @@ const queryClient = new QueryClient({
     }
 })
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component }) => {
     const [modal, setModal] = useState(null)
 
     return (
@@ -43,8 +43,8 @@ const App = ({ Component, pageProps }) => {
                     {modal}
 
                     {!Component.noLayout ?
-                    <Layout><Component {...pageProps} /></Layout> :
-                    <Component {...pageProps} />}
+                    <Layout Component={Component} /> :
+                    <Component />}
                 </ModalContext.Provider>
 
                 <ReactQueryDevtools />
