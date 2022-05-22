@@ -15,7 +15,7 @@ const NavButtons = ({ authenticatedState }) => {
                 <LinkButton href="/home" className="bg-surface2 hover:bg-hover">Home</LinkButton>
                 {authenticatedState && <LinkButton href="/profile" className="bg-surface2 hover:bg-hover">Profile</LinkButton>}
                 <LinkButton href="/users" className="bg-green hover:opacity-75 text-background">Users</LinkButton>
-                {authenticatedState && <Button onClick={() => setModal(<UploadModal />)} className="bg-yellow hover:opacity-75 text-background">Upload</Button>}
+                {authenticatedState && <Button onClick={() => setModal(<UploadModal />)} className="bg-yellow hover:opacity-75 text-background">Post</Button>}
                 {!authenticatedState && <LinkButton href="/signin" className="bg-yellow hover:opacity-75 text-background">Sign in</LinkButton>}
             </Column>
         </Card>
