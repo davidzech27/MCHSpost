@@ -21,7 +21,7 @@ const UploadModal = () => {
                         <SmallButton onClick={() => setPostSetting("public")} className={`w-24 ${postSetting === "public" ? "bg-hover" : "bg-surface2"}`}>Public</SmallButton>
                         <SmallButton onClick={() => setPostSetting("private")} className={`w-24 ${postSetting === "private" ? "bg-hover" : "bg-surface2"}`}>Private</SmallButton>
                     </div>
-                    <Button onClick={() => uploadPost({ text, postSetting })} className="w-2/3 bg-yellow hover:bg-opacity-85 text-surface1">Post</Button>{/*consider changing to hover:bg-hover*/}
+                    <Button onClick={() => uploadPost({ text, postSetting })} disabled={text === ""} className={`w-2/3 bg-yellow text-surface1 ${text !== "" ? "hover:bg-opacity-85" : "bg-opacity-40"}`}>Post</Button>{/*consider changing to hover:bg-hover*/}
                 </div>
             </Column>
         </Modal>
