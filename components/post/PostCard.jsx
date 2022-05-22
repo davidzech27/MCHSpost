@@ -1,6 +1,6 @@
 import LinkCard from "/components/wrapper/LinkCard"
 import Link from "next/link"
-import Avatar from "/components/user/avatar"
+import Avatar from "/components/user/Avatar"
 
 const PostCard = ({ post, className }) => {
     return (
