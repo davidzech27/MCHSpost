@@ -3,10 +3,12 @@ import useModalContext from "/hooks/context/useModalContext"
 import Card from "/components/wrapper/Card"
 import SmallButton from "/components/input/SmallButton"
 
-const Modal = ({ children }) => {
+const Modal = ({ open, children }) => {
     const { setModal } = useModalContext()
 
     const close = () => setModal(null)
+
+    if (!open) close()
 
     return (
         <div onClick={close} className="h-screen w-screen fixed z-10 bg-background bg-opacity-85 flex justify-center items-center">

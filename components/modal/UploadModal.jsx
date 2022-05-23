@@ -8,14 +8,22 @@ import TextArea from "/components/input/TextArea"
 import SmallButton from "/components/input/SmallButton"
 
 const UploadModal = () => {
+    const [open, setOpen] = useState(true)
+
     const uploadPost = useUpload()
+
     const [text, setText] = useState("")
     const [postSetting, setPostSetting] = useState("public")
 
     const noText = text === ""
 
+    const upload = () => {
+        uploadPost({ text, postSetting })
+        setOpen(false)
+    }
+
     return (
-        <Modal>
+        <Modal open={open}>
             <Column>
                 <TextArea value={text} setValue={setText} placeholder={`Post something ${postSetting}ly`} className="h-44 bg-surface2 focus:bg-surface3" />
                 <div className="flex justify-end relative">
@@ -23,7 +31,7 @@ const UploadModal = () => {
                         <SmallButton onClick={() => setPostSetting("public")} className={`w-24 ${postSetting === "public" ? "bg-hover" : "bg-surface2"}`}>Public</SmallButton>
                         <SmallButton onClick={() => setPostSetting("private")} className={`w-24 ${postSetting === "private" ? "bg-hover" : "bg-surface2"}`}>Private</SmallButton>
                     </div>
-                    <Button onClick={() => uploadPost({ text, postSetting })} disabled={noText} className={`w-2/3 bg-yellow text-surface1 ${noText ? "bg-opacity-40" : "hover:bg-opacity-85"}`}>Post</Button>{/*consider changing to hover:bg-hover*/}
+                    <Button onClick={upload} disabled={noText} className={`w-2/3 bg-yellow text-surface1 ${noText ? "bg-opacity-40" : "hover:bg-opacity-85"}`}>Post</Button>
                 </div>
             </Column>
         </Modal>
