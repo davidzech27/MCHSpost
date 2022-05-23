@@ -37,5 +37,5 @@ const UploadModal = () => {
         </Modal>
     )
 }
- 
+
 export default UploadModal
