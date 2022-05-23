@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react"
 
 const useStickyState = (key, defaultValue) => {
-    const [stickyState, setStickyState] = useState(defaultValue)
+    const initialValue = typeof window !== "undefined" && window.localStorage.getItem(key) ? JSON.parse(window.localStorage.getItem(key)) : defaultValue
 
-    useEffect(() => {
-        const localStorageState = window.localStorage.getItem(key)
-
-        if (localStorageState) {
-            setStickyState(JSON.parse(localStorageState))
-        }
-    }, [])
+    const [stickyState, setStickyState] = useState(initialValue)
 
     useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(stickyState))
-    }, [stickyState])//the second useeffect sets localstorage item to the defaultValue, and then sets it to the original localstorage value after the first useeffect's setState has occurred
+    }, [stickyState])
 
     return [stickyState, setStickyState]
 }
