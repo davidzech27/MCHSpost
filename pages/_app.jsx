@@ -14,14 +14,14 @@ const queryClient = new QueryClient({
                 return (await api.get(queryKey[0])).data
             },
             onError: (err) => {
-                toast(err.response)
+                toast(JSON.stringify(err.response))
             },
             retry: false,
             refetchOnWindowFocus: false
         },
         mutations: {
             onError: (err) => {
-                toast(err.response)
+                toast(JSON.stringify(err.response))
             }
         }
     }
