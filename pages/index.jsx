@@ -1,14 +1,16 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 import { useQueryClient } from "react-query"
+import useStickyState from "/hooks/util/useStickyState"
 
 const LoadingScreen = () => {
 	const router = useRouter()
     const queryClient = useQueryClient()
+    const [feedType, _] = useStickyState("feedType", "public")
 
 	useEffect(() => {
         const prefetchQueries = async () => {
-            await queryClient.prefetchQuery("/profile")
+            await Promise.all([queryClient.prefetchQuery("/profile"), queryClient.prefetchQuery(`/feed/${feedType}`)])
 		    router.push("/home")
         }
 
