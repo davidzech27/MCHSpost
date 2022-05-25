@@ -1,26 +1,21 @@
-import { useState } from "react"
 import useStickyState from "/hooks/util/useStickyState"
-import useFeed from "/hooks/api/useFeed.js"
-import useUpload from "/hooks/api/useUpload"
+import useFeed from "/hooks/api/useFeed"
+import useProfileContext from "/hooks/context/useProfileContext"
 
+import FeedHeader from "/components/header/FeedHeader"
 import Column from "/components/wrapper/Column"
-import Button from "/components/input/Button"
 import Card from "/components/wrapper/Card"
 import PostCard from "/components/post/PostCard"
-import TextArea from "/components/input/TextArea"
 
 const Home = () => {
+    const { profile, unauthenticated } = useProfileContext()
+
     const [feedType, setFeedType] = useStickyState("feedType", "public")
     const [feed, feedLoaded] = useFeed(feedType)
 
 	return (
 		<Column>
-            <Card className="bg-surface1">
-                <Column>
-                    <Button onClick={() => setFeedType("public")} className="bg-surface2 hover:bg-surface3">Public</Button>
-                    <Button onClick={() => setFeedType("friends")} className="bg-surface2 hover:bg-surface3">Friends</Button>
-                </Column>
-            </Card>
+            {profile && <FeedHeader profile={profile} feedType={feedType} setFeedType={setFeedType} />}
 
             <Card className="bg-surface1">
                 <Column>
