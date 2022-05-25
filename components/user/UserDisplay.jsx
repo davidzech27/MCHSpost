@@ -1,7 +1,7 @@
 import Column from "/components/wrapper/Column"
 import Avatar from "/components/user/Avatar"
 
-const UserDisplay = ({ user, button}) => {
+const UserDisplay = ({ user, button }) => {
     return (
         <Column>
             <Avatar user={user} className="h-32 w-32 mb-6 self-center" />
@@ -12,7 +12,7 @@ const UserDisplay = ({ user, button}) => {
             <pre className="min-h-[48px] my-6 font-sans text-lg">{user.bio}</pre>
             
             <div className="flex justify-between">
-                {button}
+                {button ?? <div />}
                 <span className="text-subtext text-lg">Joined on {new Date(user.joinedOn).toDateString()}</span>
             </div>
         </Column>
