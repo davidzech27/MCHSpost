@@ -5,8 +5,8 @@ import { withDB } from "/lib/db"
 const friendRequestHandler = async (req, res) => {
     const { email } = await getToken({ req })
 
-    const { userEmail } = req.query
-    await User.updateOne({ email: userEmail }, { $push: { friends: { email } } })
+    const { email: requestEmail } = req.query
+    await User.updateOne({ email: requestEmail }, { $push: { friends: { email } } })
 
     res.status(200).end()
 }
