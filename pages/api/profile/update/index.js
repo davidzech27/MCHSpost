@@ -7,7 +7,7 @@ const updateProfileHandler = async (req, res) => {
         const { email } = await getToken({ req })
 
         const newFields = {}
-        for (field of ["name", "photo", "bio"]) if (req.body[field]) newFields[field] = req.body[field]
+        for (const field of ["name", "photo", "bio"]) if (req.body[field]) newFields[field] = req.body[field]
 
         const updatedProfile = await User.findOneAndUpdate({ email }, newFields).lean()
         res.status(200).json(updatedProfile)
