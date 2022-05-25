@@ -4,12 +4,14 @@ import Avatar from "/components/user/Avatar"
 const UserDisplay = ({ user, button }) => {
     return (
         <Column className="mx-10 my-2">
-            <Avatar user={user} className="h-32 w-32 mb-6 self-center" />
+            <Avatar user={user} className="h-32 w-32 self-center" />
         
-            <div className="text-center text-xl tracking-wider">{user.name}</div>
-            <div className="text-center text-xl text-subtext">{user.email}</div>
+            <div className="mt-2.5 text-center text-2xl tracking-wider">{user.name}</div>
+            <div className="mb-2.5 text-center text-2xl text-subtext">{user.email}</div>
             
-            <pre className="min-h-[48px] my-6 font-sans text-lg">{user.bio}</pre>
+            <div className="min-h-[108px]">
+                <pre className="px-4 py-3 bg-surface2 rounded-xl font-sans text-xl">{user.bio}</pre>
+            </div>
             
             <div className="flex justify-between">
                 {button ?? <div />}

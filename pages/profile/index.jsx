@@ -32,13 +32,13 @@ const ProfilePage = () => {
             {profile ? 
             <>{!editMode ?
             <UserDisplay user={profile} button={<SmallButton onClick={() => setEditMode(true)} className="w-24 bg-yellow hover:bg-opacity-75 text-background">Edit</SmallButton>} /> :
-            <Column>
+            <Column className="mx-10 my-2">
                 <TextArea value={photo} setValue={setPhoto} placeholder="Link to your new profile photo" className="h-32 w-32 self-center bg-surface2 focus:bg-surface3" />
 
-                <TextInput value={name} setValue={setName} placeholder="Your new display name" className="w-80 self-center bg-surface2 focus:bg-surface3" />
-                <div className="text-center text-xl text-subtext">{profile.email}</div>
+                <TextInput value={name} setValue={setName} placeholder="Your new display name" className="-mb-2.5 w-80 self-center bg-surface2 focus:bg-surface3" />
+                <div className="mb-2.5 text-center text-2xl text-subtext">{profile.email}</div>
 
-                <TextArea value={bio} setValue={setBio} placeholder="Your new bio" className="h-24 bg-surface2 focus:bg-surface3" />
+                <TextArea value={bio} setValue={setBio} placeholder="Your new bio" className="h-[108px] bg-surface2 focus:bg-surface3" />
 
                 <div className="flex justify-between">
                     <span>
