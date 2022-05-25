@@ -28,7 +28,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <Card className="bg-surface1 px-16 py-8">
+        <Card className="bg-surface1">
             {profile ? 
             <>{!editMode ?
             <UserDisplay user={profile} button={<SmallButton onClick={() => setEditMode(true)} className="w-24 bg-yellow hover:bg-opacity-75 text-background">Edit</SmallButton>} /> :

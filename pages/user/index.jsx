@@ -8,9 +8,9 @@ const UserPage = () => {
     const email = useClientRouteParam()
 
     const user = useUser(email)
-
+    
     return (
-        <Card className="bg-surface1 px-16 py-8">
+        <Card className="bg-surface1">
             {user ?
             <UserDisplay user={user} button={null} /> :
             "Loading..."

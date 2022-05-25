@@ -3,7 +3,7 @@ import Avatar from "/components/user/Avatar"
 
 const UserDisplay = ({ user, button }) => {
     return (
-        <Column>
+        <Column className="mx-10 my-2">
             <Avatar user={user} className="h-32 w-32 mb-6 self-center" />
         
             <div className="text-center text-xl tracking-wider">{user.name}</div>
