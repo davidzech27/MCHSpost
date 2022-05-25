@@ -1,9 +1,9 @@
 import { useQuery } from "react-query"
 
 const usePost = (postId) => {
-    const { data: post, isFetched: postLoaded } = useQuery(`/post/${postId}`)
+    const { data: post } = useQuery(`/post/${postId}`)
     
-    return [post, postLoaded]
+    return post
 }
 
 export default usePost
