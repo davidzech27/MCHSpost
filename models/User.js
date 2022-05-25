@@ -19,10 +19,10 @@ const UserSchema = new mongoose.Schema({
 		default: "...",
 		maxlength: 10000
 	},
-	posts: {//can be viewed by other users and can be changed by backend
+	posts: [{//can be viewed by other users and can be changed by backend
 		type: [mongoose.Types.ObjectId],
 		ref: "Post"
-	},
+	}],
 	friends: [{//can be viewed by other users and can be changed by backend
 		email: String
 	}],
@@ -32,7 +32,6 @@ const UserSchema = new mongoose.Schema({
 	},
 	data: {//can't be viewed by other users but can be changed by backend
 		friendReqs: {
-			sent: [String],
 			recieved: [String]
 		}
 	}
