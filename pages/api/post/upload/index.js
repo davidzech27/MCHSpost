@@ -19,6 +19,9 @@ const uploadHandler = async (req, res) => {
         }
 
         newPost = await Post.create(newPost)
+
+        await User.updateOne({ email }, { $addToSet: { posts: newPost._id } })
+
         res.status(200).json(newPost)
     } else {
         res.status(405).end()
