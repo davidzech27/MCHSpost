@@ -31,7 +31,10 @@ const App = ({ Component }) => {
     return (
         <>
             <Toaster toastOptions={{
-                className: "bg-background text-text"
+                style: {
+                    background: "#192435",
+                    color: "#FEFEFF"
+                }
             }} />
 
             <QueryClientProvider client={queryClient}>
