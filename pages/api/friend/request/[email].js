@@ -6,7 +6,7 @@ const friendRequestHandler = async (req, res) => {
     const { email } = await getToken({ req })
     const { email: requestEmail } = req.query
 
-    await User.updateOne({ email: requestEmail }, { $addToSet: { "data.friendReqs.recieved": email } })  
+    await User.updateOne({ email: requestEmail }, { $addToSet: { "data.friendReqs": email } })  
 
     res.status(200).end()
 }
