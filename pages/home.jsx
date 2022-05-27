@@ -11,7 +11,7 @@ const Home = () => {
     const { profile, unauthenticated } = useProfileContext()
 
     const [feedType, setFeedType] = useStickyState("feedType", "public")
-    const [feed, feedLoaded] = useFeed(feedType)
+    const feed = useFeed(feedType)
 
 	return (
 		<Column>
@@ -19,7 +19,7 @@ const Home = () => {
 
             <Card className="bg-surface1">
                 <Column>
-                    {feedLoaded ?
+                    {feed ?
                     feed.map((post) => <PostCard post={post} className="bg-surface2 hover:bg-surface3" key={post._id} />) :
                     "Loading..."}
                 </Column>
