@@ -3,7 +3,7 @@ import { withDB } from "/lib/db"
 
 const userHandler = async (req, res) => {
     const { email } = req.query
-    const user = await User.findOne({ email }).select({ data: 0 }).lean()
+    const user = await User.findOne({ email }).select({ posts: 0, data: 0 }).lean()
 
     if (user) {
         res.status(200).json(user)
