@@ -17,4 +17,4 @@ const friendFeedHandler = async (req, res) => {
     }
 }
 
-export default withDB(friendsPostHandler)
+export default withDB(friendFeedHandler)

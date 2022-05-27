@@ -6,4 +6,4 @@ const publicFeedHandler = async (req, res) => {
     res.status(200).json(publicPosts)
 }
 
-export default withDB(publicPostHandler)
+export default withDB(publicFeedHandler)
