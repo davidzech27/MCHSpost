@@ -23,17 +23,15 @@ const UserSchema = new mongoose.Schema({
 		type: [mongoose.Types.ObjectId],
 		ref: "Post"
 	}],
-	friends: [{//can be viewed by other users and can be changed by backend
-		email: String
-	}],
+	friends: {//can be viewed by other users and can be changed by backend
+		type: [String]
+    },
 	joinedOn: {//can be viewed by other users but can't be changed
 		type: Date,
 		default: Date.now
 	},
 	data: {//can't be viewed by other users but can be changed by backend
-		friendReqs: {
-			recieved: [String]
-		}
+		friendReqs: [String]
 	}
 })
 
