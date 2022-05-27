@@ -20,7 +20,8 @@ module.exports = {
         },
         extend: {
             spacing: {
-                13: "52px"
+                13: "52px",
+                21: "84px"
             },
             opacity: {
                 85: "0.85"
