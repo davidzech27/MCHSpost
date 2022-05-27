@@ -5,25 +5,19 @@ import useProfileContext from "/hooks/context/useProfileContext"
 import FeedHeader from "/components/header/FeedHeader"
 import Column from "/components/wrapper/Column"
 import Card from "/components/wrapper/Card"
-import PostCard from "/components/post/PostCard"
+import PostList from "/components/post/PostList"
 
 const Home = () => {
-    const { profile, unauthenticated } = useProfileContext()
+    const { profile } = useProfileContext()
 
     const [feedType, setFeedType] = useStickyState("feedType", "public")
     const feed = useFeed(feedType)
 
 	return (
 		<Column>
-            {profile && <FeedHeader profile={profile} feedType={feedType} setFeedType={setFeedType} />}
+            <FeedHeader profile={profile} feedType={feedType} setFeedType={setFeedType} />
 
-            <Card className="bg-surface1">
-                <Column>
-                    {feed ?
-                    feed.map((post) => <PostCard post={post} className="bg-surface2 hover:bg-surface3" key={post._id} />) :
-                    "Loading..."}
-                </Column>
-            </Card>
+            <PostList posts={feed} />
 		</Column>
 	)
 }
