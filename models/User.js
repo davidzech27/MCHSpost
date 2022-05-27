@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
 		maxlength: 10000
 	},
 	posts: [{//can be viewed by other users and can be changed by backend
-		type: [mongoose.Types.ObjectId],
+		type: mongoose.Types.ObjectId,
 		ref: "Post"
 	}],
 	friends: {//can be viewed by other users and can be changed by backend
@@ -35,4 +35,4 @@ const UserSchema = new mongoose.Schema({
 	}
 })
 
-export default mongoose.models.User || mongoose.model("User", UserSchema)
+export default mongoose.models.User ?? mongoose.model("User", UserSchema)

@@ -38,4 +38,4 @@ PostSchema.index({ poster: 1, postedOn: -1 })
 PostSchema.index({ postSetting: 1, postedOn: -1 })
 
 
-export default mongoose.models.Post || mongoose.model("Post", PostSchema)
+export default mongoose.models.Post ?? mongoose.model("Post", PostSchema)
