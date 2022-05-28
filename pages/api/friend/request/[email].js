@@ -3,10 +3,10 @@ import { getToken } from "next-auth/jwt"
 import { withDB } from "/lib/db"
 
 const friendRequestHandler = async (req, res) => {
-    const { email } = await getToken({ req })
+    const { email: selfEmail } = await getToken({ req })
     const { email: requestEmail } = req.query
 
-    await User.updateOne({ email: requestEmail }, { $addToSet: { "data.friendReqs": email } })  
+    await User.updateOne({ email: requestEmail }, { $addToSet: { "data.friendReqs": selfEmail } })  
 
     res.status(200).end()
 }
