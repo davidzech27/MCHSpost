@@ -17,6 +17,7 @@ const PostSchema = new mongoose.Schema({
             name: String,
             photo: String
         },
+        replyTo: String,
         commentedOn: {
             type: Date,
             default: Date.now
