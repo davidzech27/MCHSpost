@@ -3,11 +3,8 @@ import { useState, useEffect } from "react"
 
 const useClientRouteParam = () => {
     const router = useRouter()
-    const [routeParam, setRouteParam] = useState(null)
-    useEffect(() => {
-        const param = router.asPath.split("/").at(-1)
-        setRouteParam(param)
-    }, [])
+    
+    const routeParam = typeof window !== "undefined" ? router.asPath.split("/").at(-1) : null
 
     return routeParam
 }
