@@ -3,12 +3,9 @@ import { useQuery, useQueryClient } from "react-query"
 const useUser = (email) => {
     const queryClient = useQueryClient()
 
-    const { data: user } = useQuery(`/user/${email}`, {
-        enabled: Boolean(email)
-    })
+    const { data: user } = useQuery(`/user/${email}`)
 
     useQuery(`/user/${email}/posts`, {
-        enabled: Boolean(email),
         onSuccess: (userPosts) => {
             queryClient.setQueryData(`/user/${email}`, (user) => ({ ...user, posts: userPosts }))
         }
