@@ -1,11 +1,12 @@
+import Card from "/components/wrapper/Card"
 import Column from "/components/wrapper/Column"
 import Avatar from "/components/user/Avatar"
 
 const UserDisplay = ({ user, button }) => {
     return (
-        <Column className="mx-10 my-2">
+        <Card className="bg-surface1">
             {user ?
-            <>
+            <Column className="mx-10 my-2">
                 <Avatar user={user} className="h-32 w-32 self-center" />
             
                 <div className="mt-2.5 text-center text-2xl tracking-wider">{user.name}</div>
@@ -19,10 +20,10 @@ const UserDisplay = ({ user, button }) => {
                     {button ?? <div />}
                     <span className="text-subtext text-lg">Joined on {new Date(user.joinedOn).toDateString()}</span>
                 </div>
-            </> :
+            </Column> :
             "Loading..."
             }
-        </Column>
+        </Card>
     )
 }
  
