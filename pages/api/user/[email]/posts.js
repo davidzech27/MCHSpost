@@ -4,7 +4,10 @@ import { withDB } from "/lib/db"
 
 const userPostHandler = async (req, res) => {
     const { email } = req.query
-    const { posts } = await User.findOne({ email }).populate("posts").select({ posts: 1 }).sort({ postedOn: -1 }).exec()
+
+    const { posts } = await User.findOne({ email }).populate("posts").select({ posts: 1 }).exec()
+    
+    posts.sort((post1, post2) => post2.postedOn.getTime() - post1.postedOn.getTime())
 
     res.status(200).json(posts)
 }
