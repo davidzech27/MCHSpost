@@ -20,7 +20,7 @@ const ProfilePage = () => {
     const noInput = photo === "" && name === "" && bio === ""
 
     const update = () => {
-        updateProfile({ photo, name, bio})
+        updateProfile({ photo, name, bio })
 
         setEditMode(false)
 
@@ -29,8 +29,7 @@ const ProfilePage = () => {
 
     return (
         <Card className="bg-surface1">
-            {profile ? 
-            <>{!editMode ?
+            {!editMode ?
             <UserDisplay user={profile} button={<SmallButton onClick={() => setEditMode(true)} className="w-24 bg-yellow hover:bg-opacity-75 text-background">Edit</SmallButton>} /> :
             <Column className="mx-10 my-2">
                 <TextArea value={photo} setValue={setPhoto} placeholder="Link to your new profile photo" className="h-32 w-32 self-center bg-surface2 focus:bg-surface3" />
@@ -48,8 +47,7 @@ const ProfilePage = () => {
                 
                     <span className="text-subtext text-lg">Joined on {new Date(profile.joinedOn).toDateString()}</span>
                 </div>
-            </Column>}</> :
-            "Loading..."}
+            </Column>}
         </Card>
     )
 }
