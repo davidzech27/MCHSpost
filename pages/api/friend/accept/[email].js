@@ -13,7 +13,7 @@ const acceptFriendRequestHandler = async (req, res) => {
         ])
 
         if (self.data.friendReqs.includes(friendEmail)) {
-            delete self.data.friendReqs[self.data.friendReqs.indexOf(friendEmail)]
+            self.data.friendReqs = self.data.friendReqs.filter((friendReq) => friendReq !== friendEmail)
 
             self.friends.push(friendEmail); friend.friends.push(selfEmail)
 
