@@ -16,7 +16,7 @@ const UserPage = () => {
     return (
         <Column>
             <UserDisplay user={user} button={
-                <SmallButton onClick={() => sendFriendRequest(email)} className="px-3 bg-green hover:bg-opacity-75 text-background">Add friend</SmallButton>
+                <SmallButton onClick={() => sendFriendRequest(email)} className="px-2.5 bg-green hover:bg-opacity-75 text-background">Add friend</SmallButton>
             } />
             
             <PostList posts={user?.posts} />
