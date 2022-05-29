@@ -9,7 +9,7 @@ const useUpload = () => {
     }, {
         onSuccess: (newPost) => {
             if (newPost.postSetting === "public") {
-                queryClient.setQueryData("/feed/public", (publicFeed) => publicFeed ? [newPost, ...publicFeed] : [newPost, ...queryClient.getQueryData("/feed/public")])
+                queryClient.setQueryData("/feed/public", (publicFeed) => [newPost, ...publicFeed])
             }
         }
     })
