@@ -7,7 +7,7 @@ const userPostHandler = async (req, res) => {
 
     let { posts } = await User.findOne({ email }).populate("posts").select({ posts: 1 }).exec()
     
-    posts = posts.map(({ comments, ...post }) => ({ ...post, commentCount: comments.length }))
+    posts = posts.map(({ comments, ...post }) => ({ ...post._doc, commentCount: comments.length }))
     posts.sort((post1, post2) => post2.postedOn.getTime() - post1.postedOn.getTime())
 
     res.status(200).json(posts)
