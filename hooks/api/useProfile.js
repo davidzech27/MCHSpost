@@ -15,7 +15,7 @@ const useProfile = () => {
         }
     })
 
-    const { data: posts } = useQuery(`/user/${profile.email}/posts`, {
+    const { data: posts } = useQuery(`/user/${profile?.email}/posts`, {
         enabled: Boolean(profile)
     })
 
