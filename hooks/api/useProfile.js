@@ -15,6 +15,10 @@ const useProfile = () => {
         }
     })
 
+    const { data: posts } = useQuery(`/user/${profile.email}/posts`, {
+        enabled: Boolean(profile)
+    })
+
     const { mutate: updateProfile } = useMutation(async (newProfile) => {
         return (await api.post("/profile/update", newProfile)).data
     }, {
@@ -23,7 +27,7 @@ const useProfile = () => {
         }
     })
 
-    return { profile, updateProfile, unauthenticated }
+    return { profile, updateProfile, posts, unauthenticated }
 }
 
 export default useProfile
