@@ -15,10 +15,11 @@ const PostCard = ({ post, className }) => {
                 </div>
             </Link>
             <br />
-            <div>
-                <pre className="font-sans">{post.text}</pre>
-                <br />
-                <span className="flex justify-end mr-6 text-subtext">{new Date(post.postedOn).toDateString()}</span>
+            <pre className="font-sans">{post.text}</pre>
+            <br />
+            <div className="pr-6 text-subtext flex justify-between">
+                <span>{post.commentCount} comments</span>
+                <span>{new Date(post.postedOn).toDateString()}</span>
             </div>
         </LinkCard>
     )
