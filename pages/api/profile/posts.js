@@ -3,7 +3,7 @@ import "/models/Post"
 import { getToken } from "next-auth/jwt"
 import { withDB } from "/lib/db"
 
-const profilePostsHandler = (req, res) => {
+const profilePostsHandler = async (req, res) => {
     const email = (await getToken({ req }))?.email
 
     if (email) {
