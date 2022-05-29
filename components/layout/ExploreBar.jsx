@@ -1,14 +1,21 @@
+import useProfile from "/hooks/api/useProfile"
+
 import Column from "/components/wrapper/Column"
 import Card from "/components/wrapper/Card"
+import LinkCard from "/components/wrapper/LinkCard"
 
 const ExploreBar = () => {
+    const { profile } = useProfile()
+
     return (
         <Column>
-            <Card className="h-21 bg-surface1">
-
-            </Card>
-            <Card className="h-96 bg-surface1">
-                
+            <LinkCard href="/friends" className="h-21 px-0 bg-surface1 hover:bg-surface3 text-subtext text-2xl text-center flex justify-center items-center">
+                <span>{profile ? `You have ${profile?.data.friendReqs.length} friend requests` : "Loading..."}</span>
+            </LinkCard>
+            <Card className="h-96 bg-surface1 text-subtext text-2xl text-center">
+                Advertise your club here!
+                <br />
+                Enquire <a href="https://mail.google.com/mail/u/0/?to=david_z2463@srcschools.org&su=MCHSpost+club+advertising&tf=cm" target="_blank" className="underline">here</a>
             </Card>
         </Column>
     )
