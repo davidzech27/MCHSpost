@@ -10,12 +10,12 @@ const PostPage = () => {
     const post = usePost(postId)
 
 	return (
-		<Card className="bg-surface1">
+		<>
             {post ?
-            <PostCard post={post} className="bg-surface2 hover:bg-surface3" /> :
+            <PostCard post={post} className="bg-surface1" /> :
             "Loading..."
             }
-        </Card>
+        </>
 	)
 }
 
