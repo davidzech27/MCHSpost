@@ -15,14 +15,6 @@ const useProfile = () => {
         }
     })
 
-    useQuery("/profile/posts", {
-        onSuccess: (profilePosts) => {
-            if (profilePosts) {
-                queryClient.setQueryData("/profile", (profile) => ({ ...profile, posts: profilePosts }))
-            }
-        }
-    })
-
     const { mutate: updateProfile } = useMutation(async (newProfile) => {
         return (await api.post("/profile/update", newProfile)).data
     }, {
