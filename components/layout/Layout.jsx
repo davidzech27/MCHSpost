@@ -6,12 +6,12 @@ import NavBar from "/components/layout/NavBar"
 import ExploreBar from "/components/layout/ExploreBar"
 
 const Layout = ({ children }) => {
-    const { profile, updateProfile, unauthenticated } = useProfile()
+    const { profile, updateProfile, posts, unauthenticated } = useProfile()
 
     const [modal, setModal] = useState(null)
 
     return (
-        <ProfileContext.Provider value={{ profile, updateProfile, unauthenticated }}>
+        <ProfileContext.Provider value={{ profile, updateProfile, posts, unauthenticated }}>
             <ModalContext.Provider value={{ setModal }}>
                 {modal}
 
