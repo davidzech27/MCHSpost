@@ -8,9 +8,9 @@ const postCommentsHandler = async (req, res) => {
     const post = await Post.findById(postId).select({ "postedBy.email": 1, comments: 1, postSetting: 1 }).lean()
 
     if (post) {
-        const { postedBy: { email: posterEmail }, comments, postSetting } = post
+        const { postedBy: { email: posterEmail }, comments } = post
 
-        if (postSetting === "public") {
+        if (post.postSetting === "public") {
             res.status(200).json(comments)
         } else {
             const { email } = await getToken({ req })
