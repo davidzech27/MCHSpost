@@ -1,19 +1,10 @@
 import LinkCard from "/components/wrapper/LinkCard"
-import Link from "next/link"
-import Avatar from "/components/user/Avatar"
+import UserInfo from "/components/user/UserInfo"
 
 const PostCard = ({ post, className }) => {
     return (
         <LinkCard href={`/post/${post._id}`} className={className}>
-            <Link href={`/user/${post.postedBy.email}`} onClick={(e) => e.stopPropagation()} passHref>
-                <div className="w-fit flex items-center">
-                    <Avatar user={post.postedBy} className="h-13 w-13 mr-4" />
-                    <div className="flex flex-col">
-                        <span className="hover:underline">{post.postedBy.name}</span>
-                        <span className="text-subtext">{post.postedBy.email}</span>
-                    </div>
-                </div>
-            </Link>
+            <UserInfo user={post.postedBy} />
             <br />
             <pre className="font-sans">{post.text}</pre>
             <br />
