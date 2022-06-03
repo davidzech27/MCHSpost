@@ -1,8 +1,7 @@
 import useClientRouteParam from "/hooks/util/useClientRouteParam"
 import usePost from "/hooks/api/usePost"
 
-import Card from "/components/wrapper/Card"
-import PostCard from "/components/post/PostCard"
+import PostDisplay from "/components/post/PostDisplay"
 
 const PostPage = () => {
     const postId = useClientRouteParam()
@@ -11,10 +10,7 @@ const PostPage = () => {
 
 	return (
 		<>
-            {post ?
-            <PostCard post={post} className="bg-surface1" /> :
-            "Loading..."
-            }
+            <PostDisplay post={post} />
         </>
 	)
 }
