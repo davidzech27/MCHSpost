@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "react-query"
 import api from "/lib/api"
 
-const useFriendRequest = () => {
+const useFriend = () => {
     const queryClient = useQueryClient()
 
     const { mutate: sendFriendRequest } = useMutation(async (email) => {
@@ -19,4 +19,4 @@ const useFriendRequest = () => {
     return { sendFriendRequest, acceptFriendRequest }
 }
 
-export default useFriendRequest
+export default useFriend

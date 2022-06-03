@@ -1,6 +1,6 @@
 import useClientRouteParam from "/hooks/util/useClientRouteParam"
 import useUser from "/hooks/api/useUser"
-import useFriendRequest from "/hooks/api/useFriendRequest"
+import useFriend from "/hooks/api/useFriend"
 
 import Column from "/components/wrapper/Column"
 import UserDisplay from "/components/user/UserDisplay"
@@ -11,7 +11,7 @@ const UserPage = () => {
     const email = useClientRouteParam()
 
     const user = useUser(email)
-    const { sendFriendRequest } = useFriendRequest()
+    const { sendFriendRequest } = useFriend()
 
     return (
         <Column>
