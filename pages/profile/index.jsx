@@ -1,5 +1,5 @@
 import { useState } from "react"
-import useProfileContext from "/hooks/context/useProfileContext"
+import useProfile from "/hooks/api/useProfile"
 
 import Card from "/components/wrapper/Card"
 import Column from "/components/wrapper/Column"
@@ -7,9 +7,10 @@ import UserDisplay from "/components/user/UserDisplay"
 import SmallButton from "/components/input/SmallButton"
 import TextInput from "/components/input/TextInput"
 import TextArea from "/components/input/TextArea"
+import PostList from "/components/post/PostList"
 
 const ProfilePage = () => {
-    const { profile, updateProfile } = useProfileContext()
+    const { profile, updateProfile, posts } = useProfile()
 
     const [editMode, setEditMode] = useState(false)
 
@@ -28,7 +29,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <>
+        <Column>
             {!editMode ?
             <UserDisplay user={profile} button={
                 <SmallButton onClick={() => setEditMode(true)} className="w-24 bg-yellow hover:bg-opacity-75 text-background">Edit</SmallButton>
@@ -52,7 +53,9 @@ const ProfilePage = () => {
                     </div>
                 </Column>
             </Card>}
-        </>
+
+            <PostList posts={posts} />
+        </Column>
     )
 }
  

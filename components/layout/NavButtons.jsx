@@ -1,4 +1,4 @@
-import useProfileContext from "/hooks/context/useProfileContext"
+import useProfile from "/hooks/api/useProfile"
 import useModalContext from "/hooks/context/useModalContext"
 
 import Card from "/components/wrapper/Card"
@@ -8,7 +8,7 @@ import LinkButton from "/components/input/LinkButton"
 import UploadModal from "/components/modal/UploadModal"
 
 const NavButtons = () => {
-    const { unauthenticated } = useProfileContext()
+    const { unauthenticated } = useProfile()
 
     const { setModal } = useModalContext()
 
