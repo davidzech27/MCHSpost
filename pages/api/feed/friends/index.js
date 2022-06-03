@@ -9,7 +9,7 @@ const friendFeedHandler = async (req, res) => {
     const friends = await User.find({ email }).select({ friends: 1 }).lean()
     const friendsEmails = friends.map((friend) => friend.email)
     
-    if (friendsEmails[0]) {
+    if (friendsEmails.length) {
         let friendsPosts = await Post.find().where("postedBy.email").in([friendsEmails]).sort({ postedOn: -1 }).lean()
 
         friendsPosts = friendsPosts.map(({ comments, ...post }) => ({ ...post, commentCount: comments.length }))
