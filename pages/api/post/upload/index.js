@@ -22,6 +22,8 @@ const uploadHandler = async (req, res) => {
 
         await User.updateOne({ email }, { $addToSet: { posts: newPost._id } })
 
+        newPost = newPost.toObject(); delete newPost.comments; newPost.commentCount = 0
+        
         res.status(200).json(newPost)
     } else {
         res.status(405).end()
