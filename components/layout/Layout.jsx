@@ -7,8 +7,9 @@ import ExploreBar from "/components/layout/ExploreBar"
 const Layout = ({ children }) => {
     const [modal, setModal] = useState(null)
 
+
     return (
-        <ModalContext.Provider value={{ setModal }}>
+        <ModalContext.Provider value={{ openModal: (modal) => setModal(modal), closeModal: () => setModal(null) }}>
             {modal}
 
             <div className="min-h-screen flex bg-background">

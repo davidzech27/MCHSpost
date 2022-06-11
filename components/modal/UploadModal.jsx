@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useUpload from "/hooks/api/useUpload"
+import useModal from "/hooks/ui/useModal"
 
 import Modal from "/components/modal/Modal"
 import Column from "/components/wrapper/Column"
@@ -8,7 +9,7 @@ import TextArea from "/components/input/TextArea"
 import SmallButton from "/components/input/SmallButton"
 
 const UploadModal = () => {
-    const [open, setOpen] = useState(true)
+    const { closeModal } = useModal()
 
     const uploadPost = useUpload()
 
@@ -19,11 +20,11 @@ const UploadModal = () => {
 
     const upload = () => {
         uploadPost({ text, postSetting })
-        setOpen(false)
+        closeModal()
     }
 
     return (
-        <Modal open={open}>
+        <Modal>
             <Column>
                 <TextArea value={text} setValue={setText} placeholder={`Post something ${postSetting}ly`} className="h-44 bg-surface2 focus:bg-surface3" />
                 <div className="flex justify-end relative">
