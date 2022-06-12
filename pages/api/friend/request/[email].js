@@ -5,12 +5,23 @@ import { withDB } from "/lib/db"
 const friendRequestHandler = async (req, res) => {
     if (req.method === "POST") {
         const { email: selfEmail } = await getToken({ req })
-        const { email: requestEmail } = req.query
+        const { email: requestedEmail } = req.query
 
-        if (selfEmail !== requestEmail) {
-            await User.updateOne({ email: requestEmail }, { $addToSet: { "data.friendReqs": selfEmail } })
+        if (selfEmail !== requestedEmail) {
+            const [self, requested] = await Promise.all([
+                User.findOne({ selfEmail }).select({ "data.friendReqs": 1 }).lean(),
+                User.findOne({ requestedEmail }).select({ "data.friendReqs": 1 })
+            ])
 
-            res.status(200).end()
+            if (!self.data.friendReqs.includes(requestedEmail)) {
+                requested.data.friendReqs.push(selfEmail)
+
+                await requested.save()
+
+                res.status(200).end()
+            } else {
+                res.status(400).send("You already have a friend request from the user!")
+            }
         } else {
             res.status(400).send("You can't be friends with yourself!")
         }
