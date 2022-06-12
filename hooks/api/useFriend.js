@@ -16,7 +16,15 @@ const useFriend = () => {
         }
     })
 
-    return { sendFriendRequest, acceptFriendRequest }
+    const { mutate: unfriendUser } = useMutation(async (email) => {
+        await api.post(`friend/unfriend/${email}`)
+    }, {
+        onSuccess: async () => {
+            await queryClient.prefetchQuery("/profile")
+        }
+    })
+
+    return { sendFriendRequest, acceptFriendRequest, unfriendUser }
 }
 
 export default useFriend
