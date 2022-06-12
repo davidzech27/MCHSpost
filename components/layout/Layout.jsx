@@ -12,14 +12,14 @@ const Layout = ({ children }) => {
         <ModalContext.Provider value={{ openModal: (modal) => setModal(modal), closeModal: () => setModal(null) }}>
             {modal}
 
-            <div className="min-h-screen flex bg-background">
-                <div className="h-screen basis-1/4 sticky top-0 p-8">
+            <div className="min-h-screen grid grid-cols-4 bg-background">
+                <div className="h-screen sticky top-0 p-8">
                     <NavBar />
                 </div>
-                <div className="min-h-screen basis-1/2 py-8">
+                <div className="min-h-screen col-span-2 py-8">
                     {children}
                 </div>
-                <div className="h-screen basis-1/4 sticky top-0 p-8">
+                <div className="h-screen sticky top-0 p-8">
                     <ExploreBar />
                 </div>
             </div>
