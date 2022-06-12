@@ -16,9 +16,8 @@ const postCommentsHandler = async (req, res) => {
             const { email } = await getToken({ req })
 
             const { friends: posterFriends } = await User.findOne({ email: posterEmail }).select({ friends: 1 }).lean()
-            const posterFriendsEmails = posterFriends.map((posterFriend) => posterFriend.email)
 
-            if (posterFriendsEmails.includes(email) || posterEmail === email) {
+            if (posterFriends.includes(email) || posterEmail === email) {
                 res.status(200).json(comments)
             } else {
                 res.status(403).end()

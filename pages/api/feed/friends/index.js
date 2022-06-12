@@ -6,11 +6,10 @@ import { withDB } from "/lib/db"
 const friendFeedHandler = async (req, res) => {
     const { email } = await getToken({ req })
 
-    const friends = await User.find({ email }).select({ friends: 1 }).lean()
-    const friendsEmails = friends.map((friend) => friend.email)
+    const { friends } = await User.find({ email }).select({ friends: 1 }).lean()
     
-    if (friendsEmails.length) {
-        let friendsPosts = await Post.find().where("postedBy.email").in([friendsEmails]).sort({ postedOn: -1 }).lean()
+    if (friends.length) {
+        let friendsPosts = await Post.find().where("postedBy.email").in([friends]).sort({ postedOn: -1 }).lean()
 
         friendsPosts = friendsPosts.map(({ comments, ...post }) => ({ ...post, commentCount: comments.length }))
 

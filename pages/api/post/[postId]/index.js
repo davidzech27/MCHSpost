@@ -15,9 +15,8 @@ const postHandler = async (req, res) => {
             const posterEmail = post.postedBy.email
 
             const { friends: posterFriends } = await User.findOne({ email: posterEmail }).select({ friends: 1 }).lean()
-            const posterFriendsEmails = posterFriends.map((posterFriend) => posterFriend.email)
 
-            if (posterFriendsEmails.includes(email) || posterEmail === email) {
+            if (posterFriends.includes(email) || posterEmail === email) {
                 res.status(200).json(post)
             } else {
                 res.status(403).send("Can't view private post. Not friends with user.")
