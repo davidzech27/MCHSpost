@@ -6,7 +6,7 @@ const PostCard = ({ post, className }) => {
         <LinkCard href={`/post/${post._id}`} className={className}>
             <UserInfo user={post.postedBy} />
             <br />
-            <pre className="font-sans">{post.text}</pre>
+            <div className="break-words whitespace-pre-wrap">{post.text}</div>
             <br />
             <div className="pr-6 text-subtext flex justify-between">
                 <span>{post.commentCount} comments</span>

@@ -2,7 +2,7 @@ import Card from "/components/wrapper/Card"
 import Column from "/components/wrapper/Column"
 import Avatar from "/components/user/Avatar"
 
-const UserDisplay = ({ user, button }) => {
+const UserDisplay = ({ user, button = <div /> }) => {
     return (
         <Card className="bg-surface1">
             {user ?
@@ -13,11 +13,11 @@ const UserDisplay = ({ user, button }) => {
                 <div className="mb-2.5 text-center text-2xl text-subtext">{user.email}</div>
                 
                 <div className="min-h-[108px]">
-                    <pre className="px-4 py-3 bg-surface2 rounded-xl font-sans text-xl">{user.bio}</pre>
+                    <div className="px-4 py-3 bg-surface2 rounded-xl text-xl break-words whitespace-pre-wrap">{user.bio}</div>
                 </div>
                 
                 <div className="flex justify-between">
-                    {button ?? <div />}
+                    {button}
                     <span className="text-subtext text-lg">Joined on {new Date(user.joinedOn).toDateString()}</span>
                 </div>
             </Column> :
