@@ -20,4 +20,8 @@
     }
 }
 
-
+@layer utilities {
+    .overflow-wrap-anywhere {
+        overflow-wrap: anywhere;
+    }
+}
