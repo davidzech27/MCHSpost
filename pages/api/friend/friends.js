@@ -1,8 +1,9 @@
 import User from "/models/User"
+import { getToken } from "next-auth/jwt"
 import { withDB } from "/lib/db"
 
 const selfFriendsHandler = async (req, res) => {
-    const { email } = req.query
+    const { email } = await getToken({ req })
     
     let { friends } = await User.findOne({ email }).select({ friends: 1 }).lean()
 
