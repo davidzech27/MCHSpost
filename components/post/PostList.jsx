@@ -14,5 +14,5 @@ const PostList = ({ posts }) => {
         </Card>
     )
 }
- 
+
 export default PostList
