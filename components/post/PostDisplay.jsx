@@ -8,7 +8,7 @@ const PostDisplay = ({ post }) => {
             <>
                 <UserInfo user={post.postedBy} />
                 <br />
-                <pre className="text-lg font-sans">{post.text}</pre>
+                <div className="text-lg break-words whitespace-pre-wrap">{post.text}</div>
                 <br />
                 <div className="pr-6 text-subtext flex justify-end">
                     <span>{new Date(post.postedOn).toDateString()}</span>
