@@ -15,7 +15,9 @@ const useProfile = () => {
         }
     })
 
-    const { data: posts } = useQuery("/profile/posts")
+    const { data: posts } = useQuery(`/user/${queryClient.getQueryData("/profile")?.email}/posts`, {
+        enabled: Boolean(queryClient.getQueryData("/profile"))
+    })
 
     const { mutate: updateProfile } = useMutation(async (newProfile) => {
         return (await api.post("/profile/update", newProfile)).data
