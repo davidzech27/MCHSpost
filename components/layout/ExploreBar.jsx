@@ -1,4 +1,5 @@
 import useFriend from "/hooks/api/useFriend"
+import useProfile from "/hooks/api/useProfile"
 
 import Column from "/components/wrapper/Column"
 import Card from "/components/wrapper/Card"
@@ -9,9 +10,11 @@ import SmallButton from "/components/input/SmallButton"
 const ExploreBar = () => {
     const { friendRequests, acceptFriendRequest } = useFriend()
 
+    const { profile } = useProfile()
+
     return (
         <Column>
-            <LinkCard href="/friends" className="bg-surface1 hover:bg-surface3 flex items-center">
+            {profile && <LinkCard href="/friends" className="bg-surface1 hover:bg-surface3 flex items-center">
                 {friendRequests ?
                 (friendRequests.length ?
                 <Column className="w-full">
@@ -23,7 +26,7 @@ const ExploreBar = () => {
                 <div className="text-2xl text-subtext text-center italic">You have no friend requests</div>) :
                 "Loading..."
                 }
-            </LinkCard>
+            </LinkCard>}
             <Card className="h-96 bg-surface1 text-subtext text-2xl text-center">
                 Advertise your club here!
                 <br />
