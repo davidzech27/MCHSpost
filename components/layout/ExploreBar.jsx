@@ -1,16 +1,16 @@
-import useProfile from "/hooks/api/useProfile"
+import useFriend from "/hooks/api/useFriend"
 
 import Column from "/components/wrapper/Column"
 import Card from "/components/wrapper/Card"
 import LinkCard from "/components/wrapper/LinkCard"
 
 const ExploreBar = () => {
-    const { profile } = useProfile()
+    const { friendRequests } = useFriend()
 
     return (
         <Column>
             <LinkCard href="/friends" className="h-21 px-0 bg-surface1 hover:bg-surface3 text-subtext text-2xl text-center flex justify-center items-center">
-                <span>{profile ? `You have ${profile?.data.friendReqs.length} friend requests` : "Loading..."}</span>
+                <span>{friendRequests ? `You have ${friendRequests.length} friend requests` : "Loading..."}</span>
             </LinkCard>
             <Card className="h-96 bg-surface1 text-subtext text-2xl text-center">
                 Advertise your club here!
