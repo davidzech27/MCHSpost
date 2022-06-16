@@ -16,7 +16,7 @@ const ExploreBar = () => {
                 (friendRequests.length ?
                 <Column className="w-full">
                     {friendRequests.map((friendRequest) =>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between" key={friendRequest.email}>
                         <UserInfo user={friendRequest} /><SmallButton onClick={() => acceptFriendRequest(friendRequest.email)} className="px-2.5 mr-2 bg-green hover:bg-opacity-75 text-background">Accept</SmallButton>
                     </div>)}
                 </Column> :

@@ -17,7 +17,7 @@ const FriendsPage = () => {
                 <Column>
                     {friendRequests.map((friendRequest) => <UserCard user={friendRequest} button={
                         <SmallButton onClick={(e) => acceptFriendRequest(friendRequest.email)} className="px-2.5 bg-green hover:bg-opacity-75 text-background">Accept</SmallButton>
-                    } className="bg-surface2 hover:bg-surface3" />)}
+                    } className="bg-surface2 hover:bg-surface3" key={friendRequest.email} />)}
                 </Column> :
                 <div className="ml-2.5 text-lg">You don't have any friend requests.</div>) :
                 "Loading..."
@@ -28,7 +28,7 @@ const FriendsPage = () => {
                 {friends ?
                 (friends.length ?
                 <Column>
-                    {friends.map((friend) => <UserCard user={friend} className="bg-surface2 hover:bg-surface3" />)}
+                    {friends.map((friend) => <UserCard user={friend} className="bg-surface2 hover:bg-surface3" key={friend.email} />)}
                 </Column> :
                 <div className="ml-2.5 text-lg">You don't have any friends yet.</div>) :
                 "Loading..."
