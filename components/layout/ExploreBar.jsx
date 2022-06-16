@@ -3,14 +3,26 @@ import useFriend from "/hooks/api/useFriend"
 import Column from "/components/wrapper/Column"
 import Card from "/components/wrapper/Card"
 import LinkCard from "/components/wrapper/LinkCard"
+import UserInfo from "/components/user/UserInfo"
+import SmallButton from "/components/input/SmallButton"
 
 const ExploreBar = () => {
-    const { friendRequests } = useFriend()
+    const { friendRequests, acceptFriendRequest } = useFriend()
 
     return (
         <Column>
-            <LinkCard href="/friends" className="h-21 px-0 bg-surface1 hover:bg-surface3 text-subtext text-2xl text-center flex justify-center items-center">
-                <span>{friendRequests ? `You have ${friendRequests.length} friend requests` : "Loading..."}</span>
+            <LinkCard href="/friends" className="bg-surface1 hover:bg-surface3 flex items-center">
+                {friendRequests ?
+                (friendRequests.length ?
+                <Column className="w-full">
+                    {friendRequests.map((friendRequest) =>
+                    <div className="flex items-center justify-between">
+                        <UserInfo user={friendRequest} /><SmallButton onClick={() => acceptFriendRequest(friendRequest.email)} className="px-2.5 mr-2 bg-green hover:bg-opacity-75 text-background">Accept</SmallButton>
+                    </div>)}
+                </Column> :
+                <div className="text-2xl text-subtext text-center italic">You have no friend requests</div>) :
+                "Loading..."
+                }
             </LinkCard>
             <Card className="h-96 bg-surface1 text-subtext text-2xl text-center">
                 Advertise your club here!
