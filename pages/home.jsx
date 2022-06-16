@@ -15,7 +15,7 @@ const Home = () => {
 
 	return (
 		<Column>
-            <FeedHeader profile={profile} feedType={feedType} setFeedType={setFeedType} />
+            {profile && <FeedHeader profile={profile} feedType={feedType} setFeedType={setFeedType} />}
 
             <PostList posts={feed} />
 		</Column>
