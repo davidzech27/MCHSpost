@@ -6,7 +6,7 @@ const UserInfo = ({ user }) => {
         <Link href={`/user/${user.email}`} passHref>
             <div className="w-fit flex items-center cursor-pointer">
                 <Avatar user={user} className="h-13 w-13 mr-4" />
-                <div className="flex flex-col">
+                <div className="flex flex-col text-base">
                     <span className="hover:underline">{user.name}</span>
                     <span className="text-subtext">{user.email}</span>
                 </div>
