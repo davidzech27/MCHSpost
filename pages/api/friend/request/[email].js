@@ -13,18 +13,14 @@ const friendRequestHandler = async (req, res) => {
                 User.findOne({ requestedEmail }).select({ "data.friendReqs": 1 })
             ])
 
-            if (!self.data.friendReqs.includes(requestedEmail)) {
-                if (!self.friends.includes(requestedEmail)) {
-                    requested.data.friendReqs.push(selfEmail)
+            if (!self.data.friendReqs.includes(requestedEmail) && !self.friends.includes(requestedEmail)) {
+                requested.data.friendReqs.push(selfEmail)
 
-                    await requested.save()
+                await requested.save()
 
-                    res.status(200).end()
-                } else {
-                    res.status(400).send("You are already friends with user!")
-                }
+                res.status(200).end()
             } else {
-                res.status(400).send("You already have a friend request from the user!")
+                res.status(400).send("Error sending friend request")
             }
         } else {
             res.status(400).send("You can't be friends with yourself!")
