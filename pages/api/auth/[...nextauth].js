@@ -15,7 +15,7 @@ const authHandler = (req, res) => {
         callbacks: {
             async signIn({ profile }) {
                 if (!profile.email.endsWith("@srcschools.org")) {
-                    return "/signin" //"You must register with an @srcschools.org email address!"
+                    return "/signin?error=srcsemail"//"You must register with an @srcschools.org email address!"
                 }
 
                 try {
@@ -26,7 +26,7 @@ const authHandler = (req, res) => {
                     }).lean()
 
                     if (existingUser) {
-                        return true //"Login successful!"
+                        return true
                     } else {
                         const newUser = {
                             email: profile.email.slice(0, -15),
@@ -34,10 +34,10 @@ const authHandler = (req, res) => {
                             photo: profile.image
                         }
                         await User.create(newUser)
-                        return true //"Account created successfully!"
+                        return true
                     }
                 } catch (err) {
-                    return "/signin" //"A database error has occurred!"
+                    return "/signin?error=database"//"A database error has occurred!"
                 }
             },
             jwt({ token }) {
