@@ -1,3 +1,5 @@
+import Head from "next/head"
+
 import { QueryClient, QueryClientProvider } from "react-query"
 import toast, { Toaster } from "react-hot-toast"
 import api from "/lib/api"
@@ -29,6 +31,10 @@ const queryClient = new QueryClient({
 const App = ({ Component }) => {
     return (
         <>
+            <Head>
+                <title>MCHSpost</title>
+            </Head>
+
             <Toaster toastOptions={{
                 style: {
                     background: "#192435",
