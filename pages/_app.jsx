@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from "react-query"
-import { ReactQueryDevtools } from "react-query/devtools"
 import toast, { Toaster } from "react-hot-toast"
 import api from "/lib/api"
 
@@ -41,8 +40,6 @@ const App = ({ Component }) => {
                 {!Component.noLayout ?
                 <Layout><Component /></Layout> :
                 <Component />}
-
-                <ReactQueryDevtools />
             </QueryClientProvider>
         </>
     )
