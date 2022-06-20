@@ -8,7 +8,7 @@ const postHandler = async (req, res) => {
     const post = await Post.findById(postId).select({ comments: 0 }).lean()
 
     if (post) {
-        if (post.postSetting === "public") {
+        if (post.postSetting !== "private") {
             res.status(200).json(post)
         } else {
             const { email } = await getToken({ req })
