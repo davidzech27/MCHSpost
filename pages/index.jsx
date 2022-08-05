@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import Head from "next/head"
 import { useQueryClient } from "react-query"
 import useStickyState from "/hooks/util/useStickyState"
 
@@ -18,10 +19,16 @@ const LoadingScreen = () => {
 	}, [])
 
 	return (
-		<div className="h-screen pt-72 text-center
-                        bg-gradient-to-r from-green to-yellow">
-            <span className="animate-pulse text-9xl text-text font-black">MCHSpost</span>
-        </div>
+        <>
+            <Head>
+                <title>MCHSpost</title>
+            </Head>
+
+            <div className="h-screen pt-72 text-center
+                            bg-gradient-to-r from-green to-yellow">
+                <span className="animate-pulse text-9xl text-text font-black">MCHSpost</span>
+            </div>
+        </>
 	)
 }
 
