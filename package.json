@@ -1,31 +1,30 @@
 {
-  "name": "mchspost",
-  "version": "0.1.0",
-  "private": false,
+  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "axios": "^0.27.2",
-    "mongoose": "^6.3.1",
-    "next": "12.1.5",
-    "next-auth": "^4.3.4",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-hot-toast": "^2.2.0",
-    "react-query": "^3.38.0"
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.13.0",
-    "eslint-config-next": "12.1.5",
-    "postcss": "^8.4.13",
-    "tailwindcss": "^3.0.24"
+    "nuxt-windicss": "^2.2.2",
+    "nuxt3": "3.0.0-27369360.33ebb01"
   },
-  "repository": "https://github.com/davidzech27/ZapChat.git",
-  "author": "David Zechowy",
-  "license": "MIT"
+  "dependencies": {
+    "@pinia/nuxt": "0.1.8",
+    "@vueuse/core": "7.5.3",
+    "axios": "^0.24.0",
+    "cookie-session": "^2.0.0",
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
+    "mongoose": "^6.1.6",
+    "passport": "^0.5.2",
+    "passport-google-oauth20": "^2.0.0",
+    "pinia": "2.0.9"
+  },
+  "name": "mchspost",
+  "description": "We recommend to look at the [documentation](https://v3.nuxtjs.org).",
+  "version": "1.0.0",
+  "main": "nuxt.config.js",
+  "author": "",
+  "license": "ISC"
 }
