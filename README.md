@@ -1,6 +1,6 @@
 ## A social network platform for Maria Carrillo High School
 
-### After signing in with their school Google account, users can make posts, customize their profile, add friends, and view public and friend feed.
+After signing in with their school Google account, users can make posts, customize their profile, add friends, and view public and friend feed.
 
 Uses NextAuth, MongoDB, mongoose, axios, Tailwind CSS, React Query, and react-hot-toast.
 
